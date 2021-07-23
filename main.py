@@ -20,7 +20,12 @@ def checkSimilarity():
     doc_2 = nlp(word2)
     similarity = doc_1.similarity(doc_2)    
     print("Similarity:", similarity )
-    return render_template('index.html',similarity_text=f'''Similarity score of words "{word1}" and "{word2}" : {similarity}  ''')
+    if(similarity >0.70):
+        return render_template('index.html',similarity_text=f'''The words "{word1}" and "{word2}" are similar!  ''')
+    else:
+        return render_template('index.html',similarity_text=f'''The words "{word1}" and "{word2}" are NOT similar!  ''')
+     
+            
 
 if __name__ == '__main__':
     print(__name__)
